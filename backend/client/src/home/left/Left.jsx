@@ -3,7 +3,7 @@ import Users from "./Users"
 
 const Left = () => {
   return (
-    <div className="w-[30%] bg-black text-gray-300">
+    <div className="w-[30%] user-bg text-gray-300">
       <h1 className="font-bold text-3xl p-2 py-3">Chats ✉️</h1>
       {/* <div className="w-full   bg-black text-gray-300"> */}
        {/* <Search /> */}

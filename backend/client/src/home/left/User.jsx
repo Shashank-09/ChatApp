@@ -10,14 +10,14 @@ const User = ({ user }) => {
   return (
     <div
     className={`hover:bg-slate-600 duration-300 ${
-      isSelected ? "bg-slate-700" : ""
+      isSelected ? "selected-user" : ""
     }`}
     onClick={() => setSelectedConversation(user)}
   >
     <div className="flex space-x-4 px-8 py-3 hover:bg-slate-700 duration-300 cursor-pointer">
       <div className={`avatar ${isOnline ? "online" : ""}`}>
         <div className="w-12 rounded-full">
-          <img src="https://imgs.search.brave.com/QIm_uVrjsZR9cZbkt9q-A8ojCWANjt1HDR4jBBMg_dI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdj/ZG4uc3RhYmxlZGlm/ZnVzaW9ud2ViLmNv/bS8yMDI0LzEyLzEz/Lzg3OTcyNTdmLTll/OTctNGJmMi1iYzI2/LTZmMGJhNWQ2OWRh/Yy5qcGc" />  
+          <img src={user.profilePicture} />  
         </div>
       </div>
       <div>

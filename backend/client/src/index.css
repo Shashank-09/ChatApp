@@ -5,3 +5,19 @@
 .flex-1::-webkit-scrollbar {
     display: none;
   }
+
+.user-bg{
+  background-color: #232323;
+}
+
+.selected-user{
+  background-color: #3a3b3b;
+}
+
+.message-bg{
+  background-color: #181818;
+}
+
+.message-header{
+  background-color: #232323;
+}

@@ -6,7 +6,7 @@ const Users = () => {
   console.log(allUsers)
   return (
     <div>
-      <h1 className="px-8 py-2 text-white font-semibold bg-slate-800 rounded-md">
+      <h1 className="px-8 py-2 text-white font-semibold selected-user rounded-md">
         Messages
       </h1>
       <div

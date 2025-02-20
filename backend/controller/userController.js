@@ -1,11 +1,12 @@
 import User from '../models/user.model.js'
 import bcrypt from "bcryptjs"
 import  createTokenAndSaveCookie from '../jwt/generate.token.js'
+import cloudinary from '../lib/cloudinaryConfig.js'
 
 
 export const SignUp = async (req , res) => {
   try {
-    const {name , email , password , role} = req.body
+    const {name , email , password , role ,profilePicture } = req.body
     const user = await User.findOne({email})
     if(user){
      return res.status(400).json({message : "Email already exisit"})
@@ -13,11 +14,24 @@ export const SignUp = async (req , res) => {
     
     const hashPassword = await bcrypt.hash(password, 10);
 
+    let imageUrl = ''
+
+    if(profilePicture){
+      const uploadResponse = await cloudinary.uploader.upload(profilePicture, {
+        folder : 'user-profile-pictures',
+        transformation: [{ width: 500, height: 500, crop: 'limit' }],
+      })
+      imageUrl = uploadResponse.secure_url
+    }
+
+
+
     const newUser = await new User({
      name,
      email,
      password : hashPassword,
-     role
+     role,
+     profilePicture : imageUrl
     })
 
     await newUser.save();
@@ -27,8 +41,9 @@ export const SignUp = async (req , res) => {
         message: "User created successfully",
         user: {
           _id: newUser._id,
-          fullname: newUser.fullname,
+          name: newUser.name,
           email: newUser.email,
+          profilePicture: newUser.profilePicture
         },
       });
     }
@@ -55,6 +70,7 @@ export const login = async (req , res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        profilePicture: user.profilePicture
       },
     });
   } catch (error) {
