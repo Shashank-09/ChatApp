@@ -4,9 +4,9 @@ import Users from "./Users"
 const Left = () => {
   return (
     <div className="w-[30%] bg-black text-gray-300">
-      <h1 className="font-bold text-3xl p-2 px-11">Chats</h1>
-    {/* <div className="w-full   bg-black text-gray-300"> */}
-      <Search />
+      <h1 className="font-bold text-3xl p-2 py-3">Chats ✉️</h1>
+      {/* <div className="w-full   bg-black text-gray-300"> */}
+       {/* <Search /> */}
 
       <div
         className=" flex-1  overflow-y-auto"
