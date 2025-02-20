@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chat-app-six-chi-51.vercel.app/", {
+      const socket = io("https://chatapp-x7ll.onrender.com", {
         query: {
           userId: authUser.user._id,
         },

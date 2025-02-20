@@ -27,9 +27,9 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.log("Error in database connection:", err));
 
 // Test Route
-app.get("/", (req, res) => {
-    res.send("HELLO");
-});
+// app.get("/", (req, res) => {
+//     res.send("HELLO");
+// });
 
 
 app.use("/api/user", userRoute);
