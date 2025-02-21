@@ -58,12 +58,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen message-bg">
+      <div className="w-2/5 flex items-center justify-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border border-black px-6 py-2 rounded-md space-y-3 w-96"
+        className="user-bg  px-6 py-2 rounded-md space-y-3 w-96"
       >
-        <h1 className="text-2xl text-blue-600 font-bold">Messenger</h1>
+        <h1 className="text-2xl text-blue-600 font-bold"> Hiring Chat Portal</h1>
         <h2 className="text-2xl">
           Create a new{" "}
           <span className="text-blue-600 font-semibold">Account</span>
@@ -155,6 +156,14 @@ const SignUp = () => {
           </Link>
         </p>
       </form>
+      </div>
+      <div className="w-3/5 flex items-center justify-center">
+          <img
+            src="/public/loginImg.svg"
+            alt="Description"
+            className="w-full h-[600px] "
+          />
+        </div>
     </div>
   );
 };
