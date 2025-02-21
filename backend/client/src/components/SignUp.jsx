@@ -159,7 +159,7 @@ const SignUp = () => {
       </div>
       <div className="w-3/5 flex items-center justify-center">
           <img
-            src="/public/loginImg.svg"
+            src="https://talkjs.com/new-web/talkjs-chat-sample-14.svg"
             alt="Description"
             className="w-full h-[600px] "
           />

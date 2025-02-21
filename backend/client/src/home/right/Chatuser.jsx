@@ -5,7 +5,7 @@ import useConversation from "../../statemanage/useConversation.js";
 
 function Chatuser() {
   const { selectedConversation } = useConversation();
-  console.log(selectedConversation)
+  console.log(selectedConversation);
   const { onlineUsers } = useSocketContext();
   const getOnlineUsersStatus = (userId) => {
     return onlineUsers.includes(userId) ? "Online" : "Offline";
@@ -14,11 +14,12 @@ function Chatuser() {
   return (
     <div className=" pl-5 pt-5 h-[12vh] flex space-x-4 message-header  duration-300">
       <div>
-        <div className={getOnlineUsersStatus}
-        >
-          <div className="w-14 rounded-full">
-          <img src={selectedConversation.profilePicture}  />  
-          </div>
+        <div className={getOnlineUsersStatus}>
+          <img
+            src={selectedConversation.profilePicture} 
+            alt="profile image"
+            className="w-14 h-15 rounded-full object-cover"
+          />
         </div>
       </div>
       <div>
