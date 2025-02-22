@@ -5,6 +5,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthProvider";
 
+
+
 const SignUp = () => {
   const [authUser, setAuthUser] = useAuth();
   const [profilePicture, setProfilePicture] = useState(""); // Store Base64 image
@@ -24,15 +26,33 @@ const SignUp = () => {
 
   // Convert Image to Base64
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; // Get the selected file
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setProfilePicture(reader.result); // Store Base64 string
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+  
+        const MAX_WIDTH = 300;
+        const scaleSize = MAX_WIDTH / img.width;
+        canvas.width = MAX_WIDTH;
+        canvas.height = img.height * scaleSize;
+  
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  
+        const compressedBase64 = canvas.toDataURL("image/jpeg", 0.7); 
+        setProfilePicture(compressedBase64);
       };
-    }
+    };
   };
+  
+ 
 
   const onSubmit = async (data) => {
     const userInfo = {
@@ -124,6 +144,7 @@ const SignUp = () => {
         </div>
         <input
           type="file"
+          accept="image/*"
           onChange={handleImageChange}
           className="file-input file-input-bordered w-full"
         />
