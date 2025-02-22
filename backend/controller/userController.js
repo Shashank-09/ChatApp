@@ -20,6 +20,7 @@ export const SignUp = async (req , res) => {
       const uploadResponse = await cloudinary.uploader.upload(profilePicture, {
         folder : 'user-profile-pictures',
         transformation: [{ width: 500, height: 500, crop: 'limit' }],
+        resource_type: "auto"
       })
       imageUrl = uploadResponse.secure_url
     }
